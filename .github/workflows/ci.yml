@@ -26,4 +26,15 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build Docker image
-        run: docker build -t Phonaxy/memory .
+        run: docker build -t phonaxy/memory .
+
+
+  push-memory:
+    needs: build-memory
+    runs-on: self-hosted
+    steps:
+      - name: Login to DockerHub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+      - name: Push Docker image
+        run: docker push phonaxy/memory
