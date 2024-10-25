@@ -43,7 +43,8 @@ jobs:
     needs: push-memory
     runs-on: self-hosted
     steps:
-      - name: SSH to server and deploy using docker-compose
+      - name: Deploy using docker-compose
         run: |
-          ssh kali@192.168.1.100 "docker-compose -f /home/kali/Desktop/actions-runner/_work/memory/memory/docker-compose.yml up -d"
+          cd /home/kali/Desktop/actions-runner/_work/memory/memory/
+          docker-compose -f docker-compose.yml up -d
 
