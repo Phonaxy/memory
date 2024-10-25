@@ -47,4 +47,3 @@ jobs:
         run: |
           cd /home/kali/Desktop/actions-runner/_work/memory/memory/
           docker-compose -f docker-compose.yml up -d
-
