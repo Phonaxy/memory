@@ -17,3 +17,13 @@ jobs:
           for file in $(find . -name "*.jpg"); do
             file "$file"
           done
+
+  build-memory:
+    needs: test-memory
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: docker build -t Phonaxy/memory .
